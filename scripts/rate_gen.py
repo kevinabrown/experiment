@@ -1,5 +1,7 @@
 #!/usr/bin/env python3
 '''
+    This scripts writes the period.file with flow rate adjustments
+    
     This script converts the BW demands and inflection points
     into the format required for CODES simulations"
 
