@@ -10,38 +10,45 @@
 '''
 
 import sys
+import json
+import argparse
+from pprint import pprint
 
-# Set schedule
-change_schedule = {
-    0: {0: 15, 1: 15, 2: 25} ,
-    1: {0: 15, 1: 15, 2: 25} ,
-    2: {0: 15, 1: 15, 2: 25} ,
-    3: {0: 25, 1: 10, 2: 5} ,
-    4: {0: 25, 1: 10, 2: 5} ,
-    5: {0: 25, 1: 10, 2: 5} ,
-    6: {0: 10, 1: 13, 2: 20} ,
-    7: {0: 10, 1: 13, 2: 20} ,
-    8: {0: 10, 1: 13, 2: 20} ,
-    9: {0: 20, 1: 1, 2: 1} ,
-    10: {0: 20, 1: 1, 2: 1} ,
-    11: {0: 20, 1: 1, 2: 1} ,
-    12: {0: 15, 1: 15, 2: 15} ,
-}
+parser = argparse.ArgumentParser(description='Generate CODES flow configs for ModSim25 experiments.')
+parser.add_argument('flows_file', help='The path to the flow rate information JSON-formatted file.')
+parser.add_argument('--codes_flows_file', help='The path to the CODES config file to create', default='../multiflow/period.file')
+
+# Parse arguments
+args = parser.parse_args()
+flowsfile = args.flows_file
+codesflowsfile = args.codes_flows_file
+
+# Open and read the JSON file
+flowrates = {}
+with open(flowsfile, 'r') as file:
+    flowrates = json.load(file)
+
+pprint(flowrates)
 
 # Set base rate for 25GB bandwidth
 message_size = 64
 bw = 25*(1024*1024*1024)/(1000*1000*1000)
 base_rate = message_size/bw
 
+
 # Reshape schedules to isolate individual flows
 flows = {0: [], 1: [], 2:[] }
-for key in change_schedule.keys():
-    for k, v in change_schedule[key].items():
+for key in flowrates.keys():
+    for k, v in flowrates[key].items():
+        k = int(k)
+        key = int(key)
         if v == 0:
-            v = 0.001
+            v = 0.1
         tmp = (v/25)*100
         myrate = base_rate * (100/tmp)
-        flows[k].append(round(myrate, 6))
+        flows[k].append((key, round(myrate, 6)))
+
+pprint(flows)
 
 # Create/overwrite rate file and use it as stdout
 rate_file = open('../multiflow/period.file', 'w')
@@ -50,7 +57,7 @@ sys.stdout = rate_file
 # Set and write injection delays for given rate changes
 for flow in [0, 1, 2]:
     print(len(flows[flow]), end=' ')
-    for i, rate in enumerate(flows[flow]):
+    for i, rate in flows[flow]:
         print(f'{i*1000}:{rate}', end=' ')
     print()
 

@@ -3,11 +3,22 @@
 import pandas as pd
 import matplotlib.pyplot as plt
 from matplotlib import style
+import argparse
 
 link_bw = 25
 
+parser = argparse.ArgumentParser(description='Plot CODES terminal(flow) outputs for ModSim25 experiments.')
+parser.add_argument('terminal_file', help='The path and name of the terminal output from CODES.')
+parser.add_argument('--output', '-o', help='The path and name of the output file', default='multiflow.png')
+
+# Parse arguments
+args = parser.parse_args()
+terminalfile = args.terminal_file
+outfile = 'multiflow.out'
+if args.output:
+    outfile = args.output
+
 # Read Terminal Data
-terminalfile = '../multiflow/terminal-packet-stats-0-601502-1754327151'
 tdf = pd.read_table(terminalfile, sep=' ')
 
 # Drop unused columns and sort
@@ -61,4 +72,4 @@ for ax in axs.flat:
 fig.set_figheight(4)
 fig.set_figwidth(13)
 
-plt.savefig('multiflow.png')
+plt.savefig(outfile)
