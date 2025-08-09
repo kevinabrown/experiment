@@ -1,0 +1,10 @@
+lp:2	send_count:0	send_bytes:0	send_time:0.000000	recv_count:1562500	recv_bytes:100000000	recv_time:1650903606.979993	max_event_size:0
+lp:3	send_count:1562500	send_bytes:100000000	send_time:4000000.000075	recv_count:0	recv_bytes:0	recv_time:0.000000	max_event_size:592
+lp:7	send_count:0	send_bytes:0	send_time:0.000000	recv_count:1562500	recv_bytes:100000000	recv_time:1237212692.677809	max_event_size:0
+lp:8	send_count:0	send_bytes:0	send_time:0.000000	recv_count:1562500	recv_bytes:100000000	recv_time:2225510079.327960	max_event_size:0
+lp:37	send_count:1562500	send_bytes:100000000	send_time:4000000.000075	recv_count:0	recv_bytes:0	recv_time:0.000000	max_event_size:592
+lp:38	send_count:1562500	send_bytes:100000000	send_time:4000000.000075	recv_count:0	recv_bytes:0	recv_time:0.000000	max_event_size:592
+lp:127	send_count:2	send_bytes:16	send_time:0.640000	recv_count:2	recv_bytes:16	recv_time:801.490116	max_event_size:800
+lp:128	send_count:2	send_bytes:16	send_time:0.640000	recv_count:2	recv_bytes:16	recv_time:801.490116	max_event_size:800
+lp:132	send_count:2	send_bytes:16	send_time:0.640000	recv_count:2	recv_bytes:16	recv_time:801.490116	max_event_size:800
+lp:133	send_count:2	send_bytes:16	send_time:0.640000	recv_count:2	recv_bytes:16	recv_time:801.490116	max_event_size:800

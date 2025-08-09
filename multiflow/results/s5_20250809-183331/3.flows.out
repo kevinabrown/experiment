@@ -1,0 +1,318 @@
+Adaptive Minimal Routing UPPER Threshold not specified: setting to default = -1 and disregaring. (Will consider congested minimal and nonminimal routes based on scoring metric alone)
+Setting ut_broadcast_window to 5000000
+global_k_picks for global adaptive routing not specified, setting to 2
+Ignoring route_scoring_factors parameter since the routing algorithm is minimal or non-minimal.
+Ignoring route_scoring_factors_local_intm parameter since the routing algorithm is minimal or non-minimal.
+Ignoring route_scoring_factors_local_dest parameter since the routing algorithm is minimal or non-minimal.
+Maximum hops for notifying not specified, setting to INT MAX
+Reading intra-group connectivity file: ../conf/dfdally-72-intra
+Reading inter-group connectivity file: ../conf/dfdally-72-inter
+
+ Total routers 36 total groups 9 
+ Total nodes 72 routers 36 groups 9 routers per group 4 radix 7
+
+credit_size not specified, using default: 8
+
+Congestion Control Not Enabled
+
+------------------ Dragonfly Dally Parameters ---------
+	num_routers =            4
+	local_bandwidth =        25.00
+	global_bandwidth =       25.00
+	cn_bandwidth =           25.00
+	num_vcs =                1
+	num_qos_levels =         1
+	local_vc_size =          8448
+	global_vc_size =         8448
+	cn_vc_size =             8448
+	chunk_size =             64
+	num_cn =                 2
+	cn_radix =               2
+	intra_grp_radix =        3
+	num_groups =             9
+	total_groups =           9
+	virtual radix =          7
+	total_routers =          36
+	total_terminals =        72
+	num_global_channels =    2
+	num_injection_queues =   1
+	num_rails =              1
+	num_planes =             1
+	cn_delay =               100.00
+	local_delay =            100.00
+	global_delay =           100.00
+	local credit_delay =     100.00
+	global credit_delay =    100.00
+	cn credit_delay =        100.00
+	router_delay =           100.00
+	routing =                MINIMAL
+	adaptive_threshold =     2560
+	adaptive_threshold_upper=-1
+	global_k_picks=          2
+	max hops notification =  2147483647
+	num_qos_levels =         1
+	qos_bucket_max =         10
+	qos_priorities =         |   0 |
+	qos_min_bws =            |   0% |
+	qos_max_bws =            | 100% |
+------------------------------------------------------
+
+Within-node eager limit (node_eager_limit) not specified, setting to 16000
+../../codes/build/bin/bin/model-net-mpi-replay --synch=1 --workload_type=online --workload_conf_file=../conf/work.load --alloc_file=../conf/alloc.conf --lp-io-dir=riodir --lp-io-use-suffix=1 --max_gen_data=100000000 --payload_sz=64 --workload_period_file=period.file -- ../conf/modsim-dfdally72-min.conf 
+
+Sat Aug  9 18:33:32 2025
+
+ROSS Version: v8.1.0
+
+tw_net_start: Found world size to be 1 
+
+ num_net_traces 10; num_dumpi_traces 4======== [ID: 0] Period count: 11
+======== [ID: 0] Period time and interval: 0 and 5.960464
+======== [ID: 0] Period time and interval: 1000 and 5.960464
+======== [ID: 0] Period time and interval: 2000 and 5.960464
+======== [ID: 0] Period time and interval: 3000 and 5.960464
+======== [ID: 0] Period time and interval: 4000 and 5.960464
+======== [ID: 0] Period time and interval: 5000 and 5.960464
+======== [ID: 0] Period time and interval: 6000 and 3.973643
+======== [ID: 0] Period time and interval: 7000 and 3.973643
+======== [ID: 0] Period time and interval: 8000 and 3.973643
+======== [ID: 0] Period time and interval: 9000 and 3.973643
+======== [ID: 0] Period time and interval: 10000 and 3.973643
+======== [ID: 1] Period count: 11
+======== [ID: 1] Period time and interval: 0 and 3.973643
+======== [ID: 1] Period time and interval: 1000 and 3.973643
+======== [ID: 1] Period time and interval: 2000 and 3.973643
+======== [ID: 1] Period time and interval: 3000 and 3.973643
+======== [ID: 1] Period time and interval: 4000 and 3.973643
+======== [ID: 1] Period time and interval: 5000 and 3.973643
+======== [ID: 1] Period time and interval: 6000 and 3.973643
+======== [ID: 1] Period time and interval: 7000 and 3.973643
+======== [ID: 1] Period time and interval: 8000 and 3.973643
+======== [ID: 1] Period time and interval: 9000 and 3.973643
+======== [ID: 1] Period time and interval: 10000 and 3.973643
+======== [ID: 2] Period count: 11
+======== [ID: 2] Period time and interval: 0 and 3.973643
+======== [ID: 2] Period time and interval: 1000 and 3.973643
+======== [ID: 2] Period time and interval: 2000 and 3.973643
+======== [ID: 2] Period time and interval: 3000 and 3.973643
+======== [ID: 2] Period time and interval: 4000 and 3.973643
+======== [ID: 2] Period time and interval: 5000 and 3.973643
+======== [ID: 2] Period time and interval: 6000 and 5.960464
+======== [ID: 2] Period time and interval: 7000 and 5.960464
+======== [ID: 2] Period time and interval: 8000 and 5.960464
+======== [ID: 2] Period time and interval: 9000 and 5.960464
+======== [ID: 2] Period time and interval: 10000 and 5.960464
+======== [ID: 3] Period count: 0
+NIC num injection port not specified, setting to 1
+NIC num copy queues not specified, setting to 1
+Dragonfly rail selection is 3
+within node transfer per byte delay is 0.040000
+
+ROSS Core Configuration: 
+	Total PEs                                                    1
+	Total KPs                                          [Nodes (1) x KPs (16)] 16
+	Total LPs                                                  180
+	Simulation End Time                                3600000000000.00
+	LP-to-PE Mapping                                   model defined
+
+
+ROSS Event Memory Allocation:
+	Model events                                             46081
+	Network events                                              16
+	Total events                                             46096
+
+Workload name provided: synthetic0
+
+ DEBUG-TERM-LOG-SUFFIX 0-5314-1754778812 
+
+---------- Setup group IDS on router: 1Workload name provided: synthetic0
+Workload name provided: synthetic0
+Workload name provided: allreduce
+*** START SEQUENTIAL SIMULATION ***
+
+======== CHANGE [now: 0.000000] App:1 | Interval: 3.973643
+======== CHANGE [now: 0.000000] App:0 | Interval: 5.960464
+======== CHANGE [now: 0.000000] App:2 | Interval: 3.973643
+
+JOB: Allreduce | size: 4 | interation_cnt: 1 | compute_delay: 16000
+Set num_servers per router 2, servers per injection queue per router 2, servers per node copy queue per node 1, num nics 2
+======== CHANGE [now: 1000.000000] App:2 | Interval: 3.973643
+======== CHANGE [now: 1000.000000] App:1 | Interval: 3.973643
+======== CHANGE [now: 1000.000000] App:0 | Interval: 5.960464
+======== CHANGE [now: 2000.000000] App:0 | Interval: 5.960464
+======== CHANGE [now: 2000.000000] App:2 | Interval: 3.973643
+======== CHANGE [now: 2000.000000] App:1 | Interval: 3.973643
+======== CHANGE [now: 3000.000000] App:0 | Interval: 5.960464
+======== CHANGE [now: 3000.000000] App:1 | Interval: 3.973643
+======== CHANGE [now: 3000.000000] App:2 | Interval: 3.973643
+======== CHANGE [now: 4000.000000] App:2 | Interval: 3.973643
+======== CHANGE [now: 4000.000000] App:0 | Interval: 5.960464
+======== CHANGE [now: 4000.000000] App:1 | Interval: 3.973643
+======== CHANGE [now: 5000.000000] App:1 | Interval: 3.973643
+======== CHANGE [now: 5000.000000] App:0 | Interval: 5.960464
+======== CHANGE [now: 5000.000000] App:2 | Interval: 3.973643
+======== CHANGE [now: 6000.000000] App:1 | Interval: 3.973643
+======== CHANGE [now: 6000.000000] App:2 | Interval: 5.960464
+======== CHANGE [now: 6000.000000] App:0 | Interval: 3.973643
+======== CHANGE [now: 7000.000000] App:2 | Interval: 5.960464
+======== CHANGE [now: 7000.000000] App:0 | Interval: 3.973643
+======== CHANGE [now: 7000.000000] App:1 | Interval: 3.973643
+======== CHANGE [now: 8000.000000] App:2 | Interval: 5.960464
+======== CHANGE [now: 8000.000000] App:0 | Interval: 3.973643
+======== CHANGE [now: 8000.000000] App:1 | Interval: 3.973643
+======== CHANGE [now: 9000.000000] App:0 | Interval: 3.973643
+======== CHANGE [now: 9000.000000] App:1 | Interval: 3.973643
+======== CHANGE [now: 9000.000000] App:2 | Interval: 5.960464
+======== CHANGE [now: 10000.000000] App:2 | Interval: 5.960464
+======== CHANGE [now: 10000.000000] App:1 | Interval: 3.973643
+======== CHANGE [now: 10000.000000] App:0 | Interval: 3.973643
+
+ Network node 51 Job 3 Rank 1 finished at 11833.058460 
+ Network node 53 Job 3 Rank 3 finished at 11833.340863 
+ Network node 50 Job 3 Rank 0 finished at 11833.584891 
+ Network node 52 Job 3 Rank 2 finished at 11833.675780 App 0: Received finished workload notificationApp 0: All non-synthetic workloads have completed
+App 0: Not notifying background traffic as max_gen_data > 0. Will let synthetic workloads finish
+ LP 36 App 1 completed sending data 100000000 completed at time 6208813.340993 
+ LP 35 App 0 completed sending data 100000000 completed at time 6210814.043319 
+ LP 1 App 2 completed sending data 100000000 completed at time 9310218.967376 *** END SIMULATION ***
+
+
+	: Running Time = 128.9714 seconds
+
+TW Library Statistics:
+	Total Events Processed                               112500728
+	Events Aborted (part of RBs)                                 0
+	Events Rolled Back                                           0
+	Event Ties Detected in PE Queues                             0
+	Efficiency                                              100.00 %
+	Total Remote (shared mem) Events Processed                   0
+	Percent Remote Events                                     0.00 %
+	Total Remote (network) Events Processed                      0
+	Percent Remote Events                                     0.00 %
+
+	Total Roll Backs                                             0
+	Primary Roll Backs                                           0
+	Secondary Roll Backs                                         0
+	Fossil Collect Attempts                                      0
+	Total GVT Computations                                       0
+
+	Net Events Processed                                 112500728
+	Event Rate (events/sec)                               872291.9
+	Total Events Scheduled Past End Time                         0
+
+TW Memory Statistics:
+	Events Allocated                                         46097
+	Memory Allocated                                         52870
+	Memory Wasted                                              220
+
+TW Data Structure sizes in bytes (sizeof):
+	PE struct                                                 1328
+	KP struct                                                  320
+	LP struct                                                  320
+	LP Model struct                                             96
+	LP RNGs                                                     80
+	Total LP                                                   496
+	Event struct                                               344
+	Event struct with Model                                   1168
+
+TW Clock Cycle Statistics (MAX values in secs at 1.0000 GHz):
+	Initialization                                          0.1103
+	Priority Queue (enq/deq)                               61.7914
+	AVL Tree (insert/delete)                                0.0000
+	LZ4 (de)compression                                     0.0000
+	Buddy system                                            0.0000
+	Event Processing                                      306.7453
+	Event Cancel                                            0.0000
+	Event Abort                                             0.0000
+
+	GVT                                                     0.0000
+	Fossil Collect                                          0.0000
+	Primary Rollbacks                                       0.0000
+	Network Read                                            0.0000
+	Other Network                                           0.0000
+	Instrumentation (computation)                           0.0000
+	Instrumentation (write)                                 0.0000
+	Total Time (Note: Using Running Time above for Speedup)    334.1279
+
+TW GVT Statistics: MPI AllReduce
+	GVT Interval                                                16
+	GVT Real Time Interval (cycles)                    0
+	GVT Real Time Interval (sec)                        0.00000000
+	Batch Size                                                  16
+
+	Forced GVT                                                   0
+	Total GVT Computations                                       0
+	Total All Reduce Calls                                       0
+	Average Reduction / GVT                                   -nan
+
+ Total bytes sent 64 recvd 64 
+ max runtime 9310218.967376 ns avg runtime 2177718.001168 
+ max comm time 9310218.967376 avg comm time 2176118.001168 
+ max send time 969990899342.233643 avg send time 193983587223.937256 
+ max recv time 7833.724211 avg recv time 3133.365799 
+ max wait time 801.934111 avg wait time 320.595966 
+
+----------
+Per App Max Elapsed Times:
+	App 0: 6210814.0433
+	App 1: 6208813.3410
+	App 2: 9310218.9674
+	App 3: 11833.6758
+----------
+LP-IO: writing output to riodir-5314-1754778812/
+LP-IO: data files:
+   riodir-5314-1754778812/dragonfly-cn-stats
+   riodir-5314-1754778812/dragonfly-link-stats
+   riodir-5314-1754778812/model-net-category-all
+   riodir-5314-1754778812/model-net-category-high
+   riodir-5314-1754778812/avg-all-reduce-time
+   riodir-5314-1754778812/mpi-replay-stats
+
+ PE0: Synthetic traffic stats: data received per proc 150000000.000000 bytes 
+
+------------------ Dragonfly Dally Parameters ---------
+	num_routers =            4
+	local_bandwidth =        25.00
+	global_bandwidth =       25.00
+	cn_bandwidth =           25.00
+	num_vcs =                1
+	num_qos_levels =         1
+	local_vc_size =          8448
+	global_vc_size =         8448
+	cn_vc_size =             8448
+	chunk_size =             64
+	num_cn =                 2
+	cn_radix =               2
+	intra_grp_radix =        3
+	num_groups =             9
+	total_groups =           9
+	virtual radix =          7
+	total_routers =          36
+	total_terminals =        72
+	num_global_channels =    2
+	num_injection_queues =   1
+	num_rails =              1
+	num_planes =             1
+	cn_delay =               100.00
+	local_delay =            100.00
+	global_delay =           100.00
+	local credit_delay =     100.00
+	global credit_delay =    100.00
+	cn credit_delay =        100.00
+	router_delay =           100.00
+	routing =                MINIMAL
+	adaptive_threshold =     2560
+	adaptive_threshold_upper=-1
+	global_k_picks=          2
+	max hops notification =  2147483647
+	num_qos_levels =         1
+	qos_bucket_max =         10
+	qos_priorities =         |   0 |
+	qos_min_bws =            |   0% |
+	qos_max_bws =            | 100% |
+------------------------------------------------------
+
+
+[QOS_Class:0] Average number of hops traversed 2.333332 average chunk latency 0.859356 us maximum chunk latency 1.227584 us avg message size 63.999905 bytes finished messages 4687508 finished chunks 4687508
+[QOS_Class:0] ADAPTIVE ROUTING STATS: 4687508 chunks routed minimally 0 chunks routed non-minimally completed packets 4687508
+[QOS_Class:0] Total packets generated 4687508 finished 4687508 Locally routed- same router 4 different-router 1562504 Remote (inter-group) 3125000 
