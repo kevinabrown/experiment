@@ -3,6 +3,7 @@
 import pandas as pd
 import matplotlib.pyplot as plt
 from matplotlib import style
+from matplotlib.ticker import MaxNLocator
 import argparse
 
 link_bw = 25
@@ -32,44 +33,47 @@ tdf = tdf.drop(cols_to_drop, axis=1)
 # Remove empty records with no bandwidth
 tdf = tdf[tdf['bw-consumed'] != 0]
 
-# Covert values
+# Convert values
 tdf['time-stamp'] = tdf['time-stamp'].apply(lambda x: x / 1000) # Convert ns to us
 tdf['bw-consumed'] = tdf['bw-consumed'].apply(lambda x: (x * link_bw)/100) # Convert % to bw
-
 
 tdf = tdf.sort_values(['time-stamp','term-id'])
 print(tdf['term-id'].unique())
 
+# Setup flow-id:term-id mappings
+flowmapping = {0: 14, 1: 15, 2: 1}
 
-# Plot data
-x0 = tdf[tdf['term-id'] == 14]['time-stamp']
-y0 = tdf[tdf['term-id'] == 14]['bw-consumed']
 
-x1 = tdf[tdf['term-id'] == 15]['time-stamp']
-y1 = tdf[tdf['term-id'] == 15]['bw-consumed']
+# Setup flows for figure
+flows = {}
 
-x2 = tdf[tdf['term-id'] == 1]['time-stamp']
-y2 = tdf[tdf['term-id'] == 1]['bw-consumed']
+for flow in sorted(flowmapping.keys()):
+    termid = flowmapping[flow]
+    x = tdf[tdf['term-id'] == termid]['time-stamp']
+    y = tdf[tdf['term-id'] == termid]['bw-consumed']
+    if len(x) > 0:
+        flows[flow] = {'x': x, 'y': y}
 
-fig, axs = plt.subplots(1, 3)
 
-axs[0].set_title("Flow 0", fontsize=10)
-axs[0].plot(x0, y0, marker='.', fillstyle='none', color='y')
+# Setup figure based on num flows
+num_flows = len(flows.keys())
+fig, axs = plt.subplots(1, num_flows)
 
-axs[1].set_title("Flow 1", fontsize=10)
-axs[1].plot(x1, y1, marker='.', fillstyle='none', color='y')
+# Plot flows
+for i, flow in enumerate(sorted(flows.keys())):
+    axs[i].set_title(f"Flow {flow}", fontsize=10)
+    axs[i].plot(flows[flow]['x'], flows[flow]['y'], marker='.', fillstyle='none', color='y')
 
-axs[2].set_title("Flow 2", fontsize=10)
-axs[2].plot(x2, y2, marker='.', fillstyle='none', color='y')
-
+# Format figure
 for ax in axs.flat:
     ax.set (xlabel='Time (us)', ylabel='Flow Injection Rate (GB/s)')
     ax.set_ylim(0, 35)
     #ax.legend()
     ax.label_outer()
     ax.grid(True)
+    ax.xaxis.set_major_locator(MaxNLocator(integer=True))
 
-fig.set_figheight(4)
-fig.set_figwidth(13)
+fig.set_figheight(3.5)
+fig.set_figwidth( 4 * num_flows)
 
-plt.savefig(outfile)
+plt.savefig(outfile, bbox_inches='tight')

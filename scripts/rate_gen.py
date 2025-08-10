@@ -37,7 +37,7 @@ base_rate = message_size/bw
 
 
 # Reshape schedules to isolate individual flows
-flows = {0: [], 1: [], 2:[] }
+flows = {}
 for key in flowrates.keys():
     for k, v in flowrates[key].items():
         k = int(k)
@@ -46,20 +46,50 @@ for key in flowrates.keys():
             v = 0.1
         tmp = (v/25)*100
         myrate = base_rate * (100/tmp)
+        if not k in flows.keys():
+            flows[k] = []
         flows[k].append((key, round(myrate, 6)))
 
 pprint(flows)
 
-# Create/overwrite rate file and use it as stdout
+# RATE FILE
+# Create/overwrite rate file
 rate_file = open('../multiflow/period.file', 'w')
-sys.stdout = rate_file
 
 # Set and write injection delays for given rate changes
-for flow in [0, 1, 2]:
-    print(len(flows[flow]), end=' ')
+for flow in sorted(flows.keys()):
+    rate_file.write( "%d " % (len(flows[flow])) )
     for i, rate in flows[flow]:
-        print(f'{i*1000}:{rate}', end=' ')
-    print()
+        timestamp = i*1000
+        rate_file.write( "%d:%f " % (timestamp, rate) )
+    rate_file.write("\n")
 
-# Write entry for allreduce SWM
-print(0)
+# Write rate entry for allreduce SWM
+rate_file.write("0\n")
+rate_file.close()
+
+
+# WORKLOAD ALLOCATION FILES
+flowconfigs = {
+        0: {'workload' : '2 synthetic0 0 4.0', 'allocation' : '14 3'},
+        1: {'workload' : '2 synthetic0 0 4.0', 'allocation' : '15 0'},
+        2: {'workload' : '2 synthetic0 0 4.0', 'allocation' : '1 2'}
+        }
+
+# Create/overwrite workload file
+workload_file = open('../conf/work.load', 'w')
+for flow in sorted(flows.keys()):
+    workload_file.write(flowconfigs[flow]['workload'] + '\n')
+
+# Write workload entry for allreduce SWM
+workload_file.write('4 allreduce 0 0.0\n')
+workload_file.close()
+
+# Create/overwrite allocation file
+allocation_file = open('../conf/alloc.conf', 'w')
+for flow in sorted(flows.keys()):
+    allocation_file.write(flowconfigs[flow]['allocation'] + '\n')
+
+# Write allocation entry for allreduce SWM
+allocation_file.write('50 51 52 53\n')
+allocation_file.close()
